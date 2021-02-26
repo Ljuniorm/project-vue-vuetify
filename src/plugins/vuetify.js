@@ -9,7 +9,7 @@ export default new Vuetify({
           light: {
             primary: '#FF1744',
             secondary: '#4A148C',
-            primaryOpacity: '#FFFFFF2A',
+            
           },
         },
       },

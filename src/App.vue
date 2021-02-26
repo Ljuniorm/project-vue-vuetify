@@ -32,4 +32,16 @@ export default {
   font-family: Roboto, sans-serif;
   margin: 0;
 }
+
+.v-avatar {
+  border: 1px solid white;
+}
+
+b {
+  font-size: 0.8em;
+}
+
+span {
+  font-size: 0.9em;
+}
 </style>
