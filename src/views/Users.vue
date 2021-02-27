@@ -46,6 +46,7 @@
       </v-row>
       <v-col v-for="(user, i) in filteredList" :key="i" cols="3">
         <v-card
+          min-height="200"
           :color="!user.activated ? '#C5CAE98a' : ''"
           :elevation="!user.activated ? '0' : ''"
         >
@@ -116,7 +117,7 @@
                       >Ativar</v-list-item-title
                     >
                   </v-list-item>
-                  <v-list-item @click="remove(i)">
+                  <v-list-item @click="remove(user)">
                     <v-list-item-title class="red--text"
                       ><v-icon class="mb-1 mr-2" small color="red"
                         >mdi-delete</v-icon
@@ -218,13 +219,18 @@ export default {
 
     async edit(infos) {
       for (let i = 0; i < this.users.length; i++) {
-        if (i === infos.index) this.users[i] = infos.user;
+        if (this.users[i] === infos.oldUser) this.users[i] = infos.user;
       }
+      this.users.reverse();
+      this.users.reverse();
       await Storage.setItem(USERS, this.users);
     },
 
-    async remove(i) {
-      this.users.splice(i, 1);
+    async remove(user) {
+      for (let i = 0; i < this.users.length; i++) {
+        if (this.users[i] === user) this.users.splice(i, 1);
+      }
+
       await Storage.setItem(USERS, this.users);
     },
 

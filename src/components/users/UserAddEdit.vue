@@ -112,7 +112,11 @@ export default {
       this.close();
       if (this.addOrEdit === "add") this.$emit("save", this.user);
       else
-        this.$emit("edit", { user: this.user, index: this.selectedUser.index });
+        this.$emit("edit", {
+          user: this.user,
+          index: this.selectedUser.index,
+          oldUser: this.selectedUser.user,
+        });
     },
 
     getDate() {
